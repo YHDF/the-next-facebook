@@ -1,118 +1,59 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
-import * as mqtt from "mqtt"  // import everything inside the mqtt module and give it the namespace "mqtt"
-let client = mqtt.connect('mqtt://test.mosquitto.org') // create a client
+"use client"
+import * as mqtt from 'mqtt';
+import React, { useEffect, useState } from 'react';
+const options = {
+  protocol: 'wss',
+  username: 'Efficom-FR33515030237',
+  password: 'jAcxg3tuzTTWi86',
+  wsOptions: {
+    host: '29157a4e5a7e4df8a00367b5eda4a93c.s1.eu.hivemq.cloud',
+    protocol: 'wss',
+    rejectUnauthorized: false, // Disable SSL/TLS certificate validation
+  },
+};
 
-client.on('connect', function () {
-  client.subscribe('presence', function (err) {
-    if (!err) {
-      client.publish('presence', 'Hello mqtt')
-    }
-  })
-})
+export default function Index() {
 
-client.on('message', function (topic, message) {
-  // message is Buffer
-  console.log(message.toString())
-  client.end()
-})
+  const [messages, setMessages] = useState([]);
 
-const inter = Inter({ subsets: ['latin'] })
+  useEffect(() => {
+    console.log('Component mounted');
 
-export default function Home() {
+
+    const client = mqtt.connect("wss://29157a4e5a7e4df8a00367b5eda4a93c.s1.eu.hivemq.cloud:8884/mqtt", options);
+
+
+    // setup the callbacks
+    client.on('connect', function () {
+      console.log('MQTT client connected');
+    });
+
+    client.on('error', function (error) {
+      console.log('MQTT client error:', error);
+    });
+
+    client.on('message', function (topic, message) {
+      // called each time a message is received
+      console.log('Received message:', topic, message.toString());
+      setMessages((prevMessages) => [...prevMessages, message.toString()]);
+    });
+
+    // subscribe to topic 'test'
+    client.subscribe('test');
+
+    // Cleanup on unmount
+    return () => {
+      client.end(); // Close MQTT connection
+    };
+  }, []);
+
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    <div>
+      <h1>Welcome to index</h1>
+      {messages.map((message, index) => (
+        <div key={index}>{message}</div>
+      ))}
+    </div>
+  );
 }
