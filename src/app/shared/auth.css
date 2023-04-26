@@ -1,0 +1,72 @@
+.login_frame {
+    margin-left: 38%;
+    margin-top: 15%;
+    overflow: none;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    width: fit-content;
+    padding: 4vh 4vw;
+}
+
+.login_frame * {
+    margin-top: 5px
+}
+
+.lbl {
+    font-weight: 200;
+}
+
+label {
+    font-weight: 300;
+    margin-left: 10%;
+}
+
+.nopasswd {
+    font-size: 12px;
+    padding-top: 5%;
+}
+
+.nopasswd a {
+    margin-left: 10vw;
+    text-decoration: none;
+    color: #3d81ff;
+}
+
+.txt input {
+    border: 0.5px solid #dedede;
+    border-radius: 10px;
+    width: 10vw;
+    height: 30px;
+}
+
+.txt {
+    height: 10%;
+}
+
+.txt input:focus {
+    outline: none;
+    box-shadow: 0 0 2pt 2pt #b3d1ff;
+    border: 2px solid #5498ff;
+    border-radius: 10px;
+    width: 10vw;
+    height: 30px;
+    /*100%*/
+}
+
+.submit-btn {
+    margin-left: 5%;
+    width: 10vw;
+    height: 50px;
+    /*15%*/
+}
+
+.submit-btn button {
+    border: none;
+    border-radius: 5px;
+    background-color: #2ea44f;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 1vh;
+    margin-left: 3vh;
+}

@@ -4,14 +4,14 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 
-import './connect.css'
+import '../shared/auth.css';
 
 const USER_TOKEN_COOKIE_NAME = 'userToken'
 const USER_NAME_COOKIE_NAME = 'userName'
 
 
 const fetchUser = async (body) => {
-    const res = await fetch('/api/auth', { method: 'POST', body: JSON.stringify(body) });
+    const res = await fetch('/api/auth/signin', { method: 'POST', body: JSON.stringify(body) });
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 
@@ -34,7 +34,7 @@ export default function Connect() {
     useEffect(() => {
         console.log(cookies.userToken)
         if (cookies.userToken) {
-            router.push('/about')
+            router.push('/chat')
         }
     });
 
@@ -46,7 +46,7 @@ export default function Connect() {
             setCookie(USER_TOKEN_COOKIE_NAME, user.token)
             setCookie(USER_NAME_COOKIE_NAME, user.username)
             console.log(user);
-            router.push('/about')
+            router.push('/chat')
         });
     };
 
@@ -55,8 +55,7 @@ export default function Connect() {
             <>
             </>
         )
-    }
-    else {
+    } else {
         return (
             <>
                 <div className='login_frame'>
