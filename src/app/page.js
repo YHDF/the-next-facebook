@@ -1,6 +1,8 @@
 "use client"
 import * as mqtt from 'mqtt';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { redirect } from 'next/navigation';
+
 const options = {
   protocol: 'wss',
   username: 'Efficom-FR33515030237',
@@ -40,20 +42,6 @@ export default function Index() {
 
     // subscribe to topic 'test'
     client.subscribe('test');
-
-    // Cleanup on unmount
-    return () => {
-      client.end(); // Close MQTT connection
-    };
+    redirect('/connect');
   }, []);
-
-
-  return (
-    <div>
-      <h1>Welcome to index</h1>
-      {messages.map((message, index) => (
-        <div key={index}>{message}</div>
-      ))}
-    </div>
-  );
 }

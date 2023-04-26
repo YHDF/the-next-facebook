@@ -1,4 +1,4 @@
-
+import './globals.css'
 export const metadata = {
   title: 'Next Facebook',
   description: 'Une application de disscussion en ligne',
