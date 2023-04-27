@@ -43,6 +43,9 @@ export default function Connect() {
         const password = passwordRef.current.value;
         const result = fetchUser({ username: username, password: password });
         result.then((user) => {
+            removeCookie(USER_TOKEN_COOKIE_NAME, { domain: 'localhost', sameSite: "lax" });
+            removeCookie(USER_NAME_COOKIE_NAME, { domain: 'localhost', sameSite: "lax" });
+            removeCookie(USER_ID_COOKIE_NAME, { domain: 'localhost', sameSite: "lax" });
             setCookie(USER_TOKEN_COOKIE_NAME, user.token)
             setCookie(USER_NAME_COOKIE_NAME, user.username)
             setCookie(USER_ID_COOKIE_NAME, user.id)
@@ -76,6 +79,9 @@ export default function Connect() {
                     </div>
                     <div className='submit-btn'>
                         <button onClick={signIn} type='button'>Se connecter</button>
+                    </div>
+                    <div className='submit-btn'>
+                        <button onClick={() => {router.push('/offline/register')}} type='button'>Créer un compte</button>
                     </div>
                 </div>
             </>

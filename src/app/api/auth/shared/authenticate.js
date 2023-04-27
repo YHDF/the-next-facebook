@@ -1,8 +1,13 @@
 const authenticate = async (pb, body) => {
+    console.log(Object.keys(body))
+    let jsonData = null;
+    if(Object.keys(body).includes('passwordConfirm')){
+        jsonData = body;
+    }else{
+        jsonData = await body.json();
+    }
 
-    const jsonData = await body.json();
 
-    console.log(await jsonData.username);
 
     try {
         const user = await pb.collection('users').authWithPassword(jsonData.username, jsonData.password);

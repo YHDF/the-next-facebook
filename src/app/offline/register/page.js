@@ -10,6 +10,7 @@ const USER_NAME_COOKIE_NAME = 'userName'
 const USER_ID_COOKIE_NAME = 'userId'
 
 const CreateUser = async (body) => {
+    console.log(JSON.stringify(body))
     const res = await fetch('/api/auth/signup', { method: 'POST', body: JSON.stringify(body) });
     if (!res.ok) {
         throw new Error('Failed to fetch data');
@@ -23,7 +24,7 @@ const Register = () => {
     const passwordRef = useRef(null);
     const emailRef = useRef(null);
     const router = useRouter();
-    const [cookies, setCookie, removeCookie] = useCookies([USER_TOKEN_COOKIE_NAME, USER_NAME_COOKIE_NAME]);
+    const [cookies, setCookie, removeCookie] = useCookies([USER_TOKEN_COOKIE_NAME, USER_NAME_COOKIE_NAME, USER_ID_COOKIE_NAME]);
 
     useEffect(() => {
 
@@ -35,10 +36,13 @@ const Register = () => {
         const password = passwordRef.current.value;
         const result = CreateUser({ username: username, email: email, password: password });
         result.then((user) => {
+            removeCookie(USER_TOKEN_COOKIE_NAME, { domain: 'localhost', sameSite: "lax" });
+            removeCookie(USER_NAME_COOKIE_NAME, { domain: 'localhost', sameSite: "lax" });
+            removeCookie(USER_ID_COOKIE_NAME, { domain: 'localhost', sameSite: "lax" });
             setCookie(USER_TOKEN_COOKIE_NAME, user.token)
             setCookie(USER_NAME_COOKIE_NAME, user.username)
             setCookie(USER_ID_COOKIE_NAME, user.id)
-            router.push('/chat')
+            router.push('/online/dashboard')
         });
     };
 

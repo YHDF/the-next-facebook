@@ -5,6 +5,7 @@ import authenticate from '../shared/authenticate';
 
 export async function POST(request, response) {
   const jsonData = await request.json();
+  console.log(jsonData.username);
   const pb = new PocketBase('http://127.0.0.1:8090');
   const data = {
     username: jsonData.username,
