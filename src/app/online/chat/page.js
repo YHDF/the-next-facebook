@@ -94,7 +94,6 @@ const Chat = () => {
       if (results?.items?.length > 0) {
         setRecordId((oldRecordId) => results?.items[0].id)
         setChannel((oldChannel) => results?.items[0].channel)
-        console.log(results?.items[0].channel)
         client.subscribe(results?.items[0].channel);
         let sortedMessages = []
         if(results?.items[0]?.messages != "") {
@@ -168,7 +167,6 @@ const Chat = () => {
         messageSource: CURRENT_USER
       };
 
-      console.log(channel)
       client.publish(channel, JSON.stringify(newMessage));
 
       const chatContainer = document.getElementById('ctn')

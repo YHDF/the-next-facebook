@@ -11,12 +11,7 @@ const USER_ID_COOKIE_NAME = 'userId'
 
 const CreateUser = async (body) => {
     const res = await fetch('/api/auth/signup', { method: 'POST', body: JSON.stringify(body) });
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
-
-    // Recommendation: handle errors
     if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
         throw new Error('Failed to fetch data');
     }
     return res.json();
@@ -43,7 +38,6 @@ const Register = () => {
             setCookie(USER_TOKEN_COOKIE_NAME, user.token)
             setCookie(USER_NAME_COOKIE_NAME, user.username)
             setCookie(USER_ID_COOKIE_NAME, user.id)
-            console.log(user);
             router.push('/chat')
         });
     };

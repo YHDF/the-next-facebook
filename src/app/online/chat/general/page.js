@@ -62,7 +62,6 @@ const Chat = () => {
   };
 
   const updateDiscussionHistory = async (discussionId, message) => {
-    console.log();
     const response = await fetch(`${PB_API_URL_PREFIX}/api/collections/discussions/records/${discussionId}`, {
       method: 'PATCH',
       headers: {
@@ -80,7 +79,6 @@ const Chat = () => {
     const userId = searchParams.get('uid');
     const userName = searchParams.get('uname');
     getGeneralDiscussion().then((results) => {
-      console.log(results);
       if (results?.items?.length > 0) {
         setRecordId((oldRecordId) => results?.items[0].id)
         setChannel((oldChannel) => results?.items[0].channel)
@@ -135,9 +133,7 @@ const Chat = () => {
 
 
     // subscribe to topic 'test'
-    console.log(channel)
     client.subscribe(channel);
-    //client.publish('test', 'Hello hi');
 
     return () => {
       // cleanup the MQTT client when component unmounts
@@ -167,12 +163,9 @@ const Chat = () => {
 
 
       const PBMessageObject = buildPBMessageObject(inputValue);
-      console.log(recordId)
-      console.log(JSON.stringify(PBMessageObject))
 
       updateDiscussionHistory(recordId, PBMessageObject)
  
-      console.log(channel)
       setInputValue('');
     }
   };

@@ -18,9 +18,6 @@ const AuthMiddleware = ({ children }) => {
         }
     }, [cookies]);
 
-    if (cookies.userToken) {
-        console.log("redirecting....;")
-    }
     return <>{children}</>;
 
 

@@ -34,10 +34,7 @@ export default function Connect() {
 
     useEffect(() => {
         if (cookies.userToken) {
-            console.log("Hello")
             router.push('/online/dashboard')
-        }else{
-            console.log("Bye")
         }
     });
 

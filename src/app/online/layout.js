@@ -11,14 +11,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-        <>
-        <nav>
-        <Logout/>
-        </nav>
-        
-        <AuthMiddleware children={children}>
-        
-          </AuthMiddleware>
-        </>
+    <>
+      <nav>
+        <Logout />
+      </nav>
+      <AuthMiddleware children={children}>
+
+      </AuthMiddleware>
+    </>
   );
 }

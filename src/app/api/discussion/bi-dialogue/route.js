@@ -1,10 +1,8 @@
-import { NextResponse } from 'next/server';
 import PocketBase from 'pocketbase';
 import { aleaRNGFactory } from "number-generator";
 
 const CHANNEL_PREFIX = 'CHNL'
 const generator = aleaRNGFactory(2);
-//console.log();
 
 const pb = new PocketBase('http://127.0.0.1:8090');
 
@@ -19,8 +17,6 @@ const filterStringBuilder = (data) => {
 
     }
   })
-  console.log(str);
-
   return str;
 
 }
