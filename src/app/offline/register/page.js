@@ -60,7 +60,7 @@ const Register = () => {
                 <label htmlFor="email">addresse email :</label>
             </div>
             <div className="txt">
-                <input ref={emailRef} type="text" name="email" />
+                <input ref={emailRef} type="email" name="email" />
             </div>
             <div className="lbl">
                 <label htmlFor="password">mot de passe :</label>

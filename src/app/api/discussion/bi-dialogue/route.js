@@ -34,8 +34,6 @@ export async function POST(request) {
     ],
   };
 
-  
-
   try {
     const discussions = pb.collection('discussions')
     let records = await discussions.getList(1, 20, {

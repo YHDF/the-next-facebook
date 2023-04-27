@@ -91,6 +91,12 @@ const Chat = () => {
     const userId = searchParams.get('uid');
     const userName = searchParams.get('uname');
     getOrCreateDiscussion({ username: userName, id: userId }).then((results) => {
+      if(!results?.items){
+        console.log(results?.channel)
+
+        setRecordId((oldRecordId) => results?.id)
+        setChannel((oldChannel) => results?.channel)
+      }
       if (results?.items?.length > 0) {
         setRecordId((oldRecordId) => results?.items[0].id)
         setChannel((oldChannel) => results?.items[0].channel)
@@ -166,6 +172,8 @@ const Chat = () => {
         content: inputValue,
         messageSource: CURRENT_USER
       };
+
+      console.log(channel)
 
       client.publish(channel, JSON.stringify(newMessage));
 
