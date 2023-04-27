@@ -7,14 +7,17 @@ To run the application, you need to have Node.js and Pocketbase installed on you
 
 You can install the dependencies by running the following command:
 
-<sup>npm install</sup>
+```
+npm install
+```
 
 Starting the Application
 
 To start the application, run the following command:
 
-<sup>npm run dev</sup>
-
+```
+npm run dev
+```
 
 
 This will start the application in development mode.
@@ -22,12 +25,18 @@ Starting Pocketbase
 
 To start Pocketbase run the following commands:
 > For Linux : 
-<sup>cd /src/pb/linux</sup>
-<sup>./pocket serve</sup>
+
+```
+cd /src/pb/linux
+./pocket serve
+```
 
 > For Windows : 
-<sup>cd /src/pb/windows</sup>
-<sup>./pocket serve</sup>
+
+```
+cd /src/pb/windows
+./pocket serve
+```
 
 ## For windows Only (To get the same init data as linux): 
 Navigate to the Admin UI import page: "http://127.0.0.1:8090/_/#/settings/import-collections" and import the pb_schema.json file inside the windows directory
