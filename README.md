@@ -1,32 +1,36 @@
 The Next Facebook
 
-The Next Facebook is a web application built using MQTT (Message Queuing Telemetry Transport) protocol. It provides a platform for users to communicate with each other through a general chat channel and private chat channels. It also includes a login/signup page for authentication purposes.
-Installation
+This is a simple MQTT-based chat application called "The Next Facebook". It allows users to sign up, log in, and chat with each other in a general chat room or via private messages.
+Dependencies
 
-    Clone the repository from GitHub.
-    Install dependencies using npm install.
-    Start the app with npm run dev.
-    Start the Pocketbase database with ./pocket serve.
+To run the application, you need to have Node.js and Pocketbase installed on your machine.
 
+You can install the dependencies by running the following command:
+
+npm install
+
+Starting the Application
+
+To start the application, run the following command:
+
+npm run dev
+
+This will start the application in development mode.
+Starting Pocketbase
+
+To start Pocketbase, navigate to src/pb/[linux] | [windows] and run the following command:
+
+./pocket serve
+
+This will start Pocketbase and create the necessary tables for the application to function.
 Usage
 
-    Navigate to localhost:3000 in your web browser.
-    Sign up for an account if you don't have one already.
-    Log in using your email and password.
-    Join the general chat channel to communicate with other users.
-    Create or join a private chat channel to communicate with a specific user.
+After starting the application and Pocketbase, navigate to http://localhost:3000 in your web browser. You will be taken to the sign-up page where you can create a new account. Once you've created an account, you can log in and start chatting with other users.
 
-Technologies Used
+The application allows you to chat in a general chat room or via private messages with other users. To start a private chat, click on the username of the user you want to chat with and send them a message.
+Contributing
 
-    MQTT protocol
-    Node.js
-    Express.js
-    Pocketbase database
-
-Contributors
-
-    Your Name Here - Creator and maintainer of the project.
-
+If you'd like to contribute to the project, feel free to fork the repository and submit a pull request.
 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT license. See the LICENSE file for more details.
