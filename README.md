@@ -1,4 +1,4 @@
-The Next Facebook
+# The Next Facebook
 
 This is a simple MQTT-based chat application called "The Next Facebook". It allows users to sign up, log in, and chat with each other in a general chat room or via private messages.
 Dependencies
@@ -7,23 +7,29 @@ To run the application, you need to have Node.js and Pocketbase installed on you
 
 You can install the dependencies by running the following command:
 
-npm install
+<sup>npm install</sup>
 
 Starting the Application
 
 To start the application, run the following command:
 
-npm run dev
+<sup>npm run dev</sup>
+
+
 
 This will start the application in development mode.
 Starting Pocketbase
 
-To start Pocketbase, navigate to src/pb/[linux] | [windows] and run the following command:
+To start Pocketbase run the following commands:
+> For Linux : 
+<sup>cd /src/pb/linux</sup>
+<sup>./pocket serve</sup>
 
-./pocket serve
+> For Windows : 
+<sup>cd /src/pb/windows</sup>
+<sup>./pocket serve</sup>
 
-
-For windows Only (To get the same init data as linux): 
+## For windows Only (To get the same init data as linux): 
 Navigate to the Admin UI import page: "http://127.0.0.1:8090/_/#/settings/import-collections" and import the pb_schema.json file inside the windows directory
 
 This will start Pocketbase and create the necessary tables for the application to function.
