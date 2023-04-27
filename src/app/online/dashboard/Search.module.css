@@ -1,0 +1,40 @@
+.searchFrame {
+  margin-left: 38%;
+  margin-top: 15%;
+  overflow: none;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  width: fit-content;
+  padding: 4vh 4vw;
+}
+
+.searchFrame * {
+  margin-top: 5px
+}
+
+.searchFrame .txt input {
+  border: 0.5px solid #dedede;
+  border-radius: 10px;
+  width: 10vw;
+  height: 30px;
+}
+
+.searchFrame .txt input:focus {
+  outline: none;
+  box-shadow: 0 0 2pt 2pt #b3d1ff;
+  border: 2px solid #5498ff;
+  border-radius: 10px;
+  width: 10vw;
+  height: 30px;
+}
+
+.searchFrame .txt button {
+  border: none;
+  border-radius: 5px;
+  background-color: #2ea44f;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 1vh;
+  margin-left: 3vh;
+}

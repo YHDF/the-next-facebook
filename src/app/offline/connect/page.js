@@ -4,10 +4,11 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 
-import '../shared/auth.css';
+import '../../shared/shared.css';
 
 const USER_TOKEN_COOKIE_NAME = 'userToken'
 const USER_NAME_COOKIE_NAME = 'userName'
+const USER_ID_COOKIE_NAME = 'userId'
 
 
 const fetchUser = async (body) => {
@@ -32,9 +33,11 @@ export default function Connect() {
 
 
     useEffect(() => {
-        console.log(cookies.userToken)
         if (cookies.userToken) {
-            router.push('/chat')
+            console.log("Hello")
+            router.push('/online/dashboard')
+        }else{
+            console.log("Bye")
         }
     });
 
@@ -45,8 +48,8 @@ export default function Connect() {
         result.then((user) => {
             setCookie(USER_TOKEN_COOKIE_NAME, user.token)
             setCookie(USER_NAME_COOKIE_NAME, user.username)
-            console.log(user);
-            router.push('/chat')
+            setCookie(USER_ID_COOKIE_NAME, user.id)
+            router.push('/online/dashboard')
         });
     };
 

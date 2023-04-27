@@ -1,10 +1,7 @@
 import { NextResponse } from 'next/server';
 import PocketBase from 'pocketbase';
-import { aleaRNGFactory } from "number-generator";
 import authenticate from '../shared/authenticate';
 
-const generator = aleaRNGFactory(2);
-//console.log(generator.uInt32());
 
 export async function POST(request, response) {
   const jsonData = await request.json();

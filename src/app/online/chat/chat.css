@@ -15,6 +15,7 @@
 
 .chat-messages {
     padding: 16px;
+    color: white;
 }
 
 .chat-message {
@@ -44,13 +45,10 @@
 
 }
 
-.chat-sender {
-    background-color : #63ff70;
-}
 
 .chat-send-button {
     position: absolute;
-    width: 5vw;
+    width: fit-content;
     height: 4vh;
     bottom: 6.5%;
     right:  7%;

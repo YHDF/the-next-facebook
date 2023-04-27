@@ -3,11 +3,11 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 
-import '../shared/auth.css'
-import '../shared/auth.css';
+import '../../shared/shared.css';
 
 const USER_TOKEN_COOKIE_NAME = 'userToken'
 const USER_NAME_COOKIE_NAME = 'userName'
+const USER_ID_COOKIE_NAME = 'userId'
 
 const CreateUser = async (body) => {
     const res = await fetch('/api/auth/signup', { method: 'POST', body: JSON.stringify(body) });
@@ -42,6 +42,7 @@ const Register = () => {
         result.then((user) => {
             setCookie(USER_TOKEN_COOKIE_NAME, user.token)
             setCookie(USER_NAME_COOKIE_NAME, user.username)
+            setCookie(USER_ID_COOKIE_NAME, user.id)
             console.log(user);
             router.push('/chat')
         });

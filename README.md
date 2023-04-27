@@ -1,37 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+The Next Facebook
 
-## Getting Started
+The Next Facebook is a web application built using MQTT (Message Queuing Telemetry Transport) protocol. It provides a platform for users to communicate with each other through a general chat channel and private chat channels. It also includes a login/signup page for authentication purposes.
+Installation
 
-First, run the development server:
+    Clone the repository from GitHub.
+    Install dependencies using npm install.
+    Start the app with npm run dev.
+    Start the Pocketbase database with ./pocket serve.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Usage
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Navigate to localhost:3000 in your web browser.
+    Sign up for an account if you don't have one already.
+    Log in using your email and password.
+    Join the general chat channel to communicate with other users.
+    Create or join a private chat channel to communicate with a specific user.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Technologies Used
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.js`.
+    MQTT protocol
+    Node.js
+    Express.js
+    Pocketbase database
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Contributors
 
-## Learn More
+    Your Name Here - Creator and maintainer of the project.
 
-To learn more about Next.js, take a look at the following resources:
+License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# next-facebook
+This project is licensed under the MIT License.

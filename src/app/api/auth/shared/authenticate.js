@@ -1,18 +1,16 @@
 const authenticate = async (pb, body) => {
-    let jsonData = null;
-    if (typeof body === 'object') {
-        jsonData = body;
-    } else {
-        console.log('body is not an object');
-        jsonData = await body.json();
-    }
+
+    const jsonData = await body.json();
+
+    console.log(await jsonData.username);
 
     try {
-        await pb.collection('users').authWithPassword(jsonData.username, jsonData.password);
+        const user = await pb.collection('users').authWithPassword(jsonData.username, jsonData.password);
         // after the above you can also access the auth data from the authStore
         const authStore = {
             isValid: pb.authStore.isValid,
             token: pb.authStore.token,
+            id : user.record.id,
             username: jsonData.username,
         };
         return authStore;
