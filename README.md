@@ -22,6 +22,10 @@ To start Pocketbase, navigate to src/pb/[linux] | [windows] and run the followin
 
 ./pocket serve
 
+
+For windows Only (To get the same init data as linux): 
+Navigate to the Admin UI import page: "http://127.0.0.1:8090/_/#/settings/import-collections" and import the pb_schema.json file inside the windows directory
+
 This will start Pocketbase and create the necessary tables for the application to function.
 Usage
 

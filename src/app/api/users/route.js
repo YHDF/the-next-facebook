@@ -8,10 +8,11 @@ const pb = new PocketBase('http://127.0.0.1:8090');
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const keyword = searchParams.get('q');
+  const notKeyword = searchParams.get('noteq');
 
   try {
     const records = await pb.collection('users').getList(1, 20, {
-      filter : `username ?~ "${keyword}"`
+      filter : `username ?~ "${keyword}" && username ?!~ "${notKeyword}"`
     })
 
     return new Response(JSON.stringify(records), {

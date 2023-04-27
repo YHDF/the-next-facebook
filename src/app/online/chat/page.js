@@ -9,7 +9,7 @@ import './chat.css'; // Import your CSS file for styling
 
 const USER_TOKEN_COOKIE_NAME = 'userToken';
 const USER_NAME_COOKIE_NAME = 'userName';
-const USER_ID_COOKIE_NAME = 'userId'
+const USER_ID_COOKIE_NAME = 'userId';
 
 const CURRENT_USER = "current"
 const OUTSIDE_USER = "outside"
@@ -74,7 +74,6 @@ const Chat = () => {
   };
 
   const updateDiscussionHistory = async (discussionId, message) => {
-    console.log();
     const response = await fetch(`${PB_API_URL_PREFIX}/api/collections/discussions/records/${discussionId}`, {
       method: 'PATCH',
       headers: {
@@ -92,11 +91,12 @@ const Chat = () => {
     const userId = searchParams.get('uid');
     const userName = searchParams.get('uname');
     getOrCreateDiscussion({ username: userName, id: userId }).then((results) => {
-      console.log(results);
       if (results?.items?.length > 0) {
         setRecordId((oldRecordId) => results?.items[0].id)
         setChannel((oldChannel) => results?.items[0].channel)
-        let  sortedMessages = []
+        console.log(results?.items[0].channel)
+        client.subscribe(results?.items[0].channel);
+        let sortedMessages = []
         if(results?.items[0]?.messages != "") {
            sortedMessages = JSON.parse(results?.items[0].messages).sort((a, b) => a.timestamp - b.timestamp);
         }
@@ -147,8 +147,6 @@ const Chat = () => {
 
 
     // subscribe to topic 'test'
-    console.log(channel)
-    client.subscribe(channel);
     //client.publish('test', 'Hello hi');
 
     return () => {
@@ -170,8 +168,8 @@ const Chat = () => {
         messageSource: CURRENT_USER
       };
 
+      console.log(channel)
       client.publish(channel, JSON.stringify(newMessage));
-
 
       const chatContainer = document.getElementById('ctn')
       chatContainer.scrollTo(0, chatContainer.scrollHeight);
@@ -179,17 +177,13 @@ const Chat = () => {
 
 
       const PBMessageObject = buildPBMessageObject(inputValue);
-      console.log(recordId)
-      console.log(JSON.stringify(PBMessageObject))
 
       updateDiscussionHistory(recordId, PBMessageObject)
  
-      console.log(channel)
       setInputValue('');
     }
   };
 
- 
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
