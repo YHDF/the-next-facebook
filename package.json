@@ -20,5 +20,8 @@
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
     "utf-8-validate": "^5.0.10"
+  },
+  "engines": {
+    "node": ">=17 <18"
   }
 }
